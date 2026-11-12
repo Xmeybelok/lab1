@@ -9,7 +9,8 @@ def count_vowels(data):
     count = 0
 
     for i in text_lower:
-        if i == 'a' or i == 'e' or i == 'i' or i == 'o' or i == 'u': count = count + 1
+        if i == 'a' or i == 'e' or i == 'i' or i == 'o' or i == 'u':
+            count = count + 1
     return count
 
 
@@ -52,13 +53,13 @@ def mse(data):
     predicted, expected = data.predicted, data.expected
     n = len(predicted)
     if n == 0: return 0.0
-    sum = 0.0
+    total_sum = 0.0
     
     for i in range(n):
         error = predicted[i] - expected[i]
-        sum = sum + (error * error)
+        total_sum = total_sum + (error * error)
 
-    return(sum / n)
+    return total_sum / n
 
 
 def prime_factorization(data):
@@ -68,33 +69,20 @@ def prime_factorization(data):
     
     while d * d <= num:
         if num % d == 0:
-            с = 0
+            c = 0
             while num % d == 0:
-                с = с + 1
+                c = c + 1
                 num = num // d
-            
-            if с == 1:
+            if c == 1:
                 result = result + "(" + str(d) + ")"
             else:
-                result = result + "(" + str(d) + "**" + str(с) + ")"
+                result = result + "(" + str(d) + "**" + str(c) + ")"
         d = d + 1
         
     if num > 1: result = result + "(" + str(num) + ")"
     
     return result
 
-
-def pyramid(data: PositiveIntegerInput) -> int | str:
-    num = data.value
-    total = 0
-    k = 0
-
-    while total < num:
-        k = k + 1
-        total = total + (k * k)
-    
-    if total == num: return k
-    else: return "impossible!"
 
 def pyramid(data):
     num = data.value
@@ -105,10 +93,10 @@ def pyramid(data):
         total = total + (k * k)
     
     if total == num: return k
-    else: return "impossible!"
+    else: return "It is impossible"
 
 
-def is_balanced_num(data):
+def is_balanced_number(data):
     num = data.value
     s = str(num)
     left_sum = 0
@@ -122,8 +110,10 @@ def is_balanced_num(data):
         left_part = s[:k - 1]
         right_part = s[k + 1:]
     
-    for i in left_part: left_sum = left_sum + int(i)
+    for i in left_part:
+        left_sum = left_sum + int(i)
 
-    for i in right_part: right_sum = right_sum + int(i)
+    for i in right_part:
+        right_sum = right_sum + int(i)
     
     return left_sum == right_sum
